@@ -2,17 +2,17 @@
 
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { useI18n } from '@/src/features/i18n/context'
 
 const techStack = ['Svelte', 'Laravel', 'Spring Boot', 'Blockchain']
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay, ease: 'easeOut' },
+    transition: { duration: 0.5, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 }
 

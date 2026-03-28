@@ -3,8 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { github } from 'lucide-react/icons'
+import { Code, Menu, X } from 'lucide-react'
 import { ThemeToggle } from '@/src/features/theme/components/theme-toggle'
 import { LanguageSwitcher } from '@/src/features/i18n/components/language-switcher'
 import { Container } from './container'
@@ -73,7 +72,7 @@ export function Navbar() {
               aria-label={t.common.github}
               className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
-              <github className="h-4 w-4" aria-hidden />
+              <Code className="h-4 w-4" aria-hidden />
             </a>
             <ThemeToggle />
 

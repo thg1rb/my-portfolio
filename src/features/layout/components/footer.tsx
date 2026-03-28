@@ -1,6 +1,6 @@
 'use client'
 
-import { github } from 'lucide-react/icons'
+import { Code } from 'lucide-react'
 import { Container } from './container'
 import { useI18n } from '@/src/features/i18n/context'
 
@@ -25,7 +25,7 @@ export function Footer() {
               aria-label={t.common.github}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              <github className="h-4 w-4" aria-hidden />
+              <Code className="h-4 w-4" aria-hidden />
             </a>
             <span className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Bright. {t.footer.rights}
