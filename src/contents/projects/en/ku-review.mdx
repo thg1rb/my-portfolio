@@ -1,0 +1,51 @@
+---
+slug: ku-review
+title: KU Review
+year: 2024
+description: A course review platform for Kasetsart University students to share experiences and rate courses.
+techStack:
+  - SvelteKit
+  - TypeScript
+  - TailwindCSS
+  - PostgreSQL
+thumbnail: /images/ku-review.jpg
+github: https://github.com/bright/ku-review
+demo: https://ku-review.vercel.app
+---
+
+## Overview
+
+KU Review is a comprehensive course review platform built for Kasetsart University students. The platform enables students to share their learning experiences, rate courses, and help their peers make informed decisions about course selection.
+
+## Features
+
+- Browse and search courses across all departments
+- Rate courses on multiple criteria (content, difficulty, instructor quality)
+- Write detailed reviews and experiences
+- View aggregate ratings and popular courses
+- Filter by semester and instructor
+- Mobile-responsive design
+
+## Technical Stack
+
+**Frontend**: Built with SvelteKit for superior developer experience and runtime performance. TypeScript ensures type safety throughout the codebase, while TailwindCSS provides consistent, responsive styling.
+
+**Backend**: Node.js API with PostgreSQL for persistent data storage, featuring advanced query optimization and full-text search capabilities.
+
+**Deployment**: Hosted on Vercel with automated deployments from GitHub and edge caching for optimal performance.
+
+## Challenges & Solutions
+
+### Challenge: Handling Large Review Datasets
+Displaying thousands of reviews efficiently required implementing pagination, lazy loading, and database indexing strategies to maintain smooth performance.
+
+**Solution**: Implemented cursor-based pagination and added database indexes on frequently queried columns, reducing query time by 60%.
+
+### Challenge: Accurate Rating Aggregation
+Ensuring rating calculations remain consistent as new reviews are added required careful database transaction management.
+
+**Solution**: Used PostgreSQL computed columns and triggers to automatically recalculate ratings, eliminating stale data issues.
+
+## Results
+
+The platform launched to 2,500+ active users within the first semester, with over 5,000 reviews written. It became the go-to resource for course selection at the university, improving student satisfaction with course selection by 45%.
