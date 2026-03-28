@@ -20,7 +20,7 @@ export const translations = {
         "I build full-stack applications and explore blockchain technology. Passionate about clean code, elegant interfaces, and engineering things that matter.",
       specializesIn: "I work with",
       viewProjects: "View Projects",
-      contactMe: "Contact Me",
+      aboutMe: "About Me",
     },
     projects: {
       title: "Projects",
@@ -40,9 +40,16 @@ export const translations = {
       focusText:
         "Full-stack development with a strong interest in distributed systems and blockchain applications. I enjoy working across the entire stack — from databases and APIs to frontend interfaces.",
       stack: "Tech Stack",
+      languages: "Programming Languages",
+      frameworks: "Frameworks",
+      tools: "Tools & Others",
       contact: "Get in touch",
       contactText:
         "I'm always open to interesting conversations, internship opportunities, or collaborations. Feel free to reach out.",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      email: "Email",
+      resume: "Resume / CV",
     },
     footer: {
       built: "Built with Next.js & Tailwind CSS",
@@ -73,7 +80,7 @@ export const translations = {
         "ฉันพัฒนาแอปพลิเคชัน Full-stack และสำรวจเทคโนโลยีบล็อกเชน หลงใหลในโค้ดที่สะอาด อินเทอร์เฟซที่สวยงาม และการสร้างสิ่งที่มีความหมาย",
       specializesIn: "เทคโนโลยีที่ใช้",
       viewProjects: "ดูโปรเจกต์",
-      contactMe: "ติดต่อฉัน",
+      aboutMe: "เกี่ยวกับฉัน",
     },
     projects: {
       title: "โปรเจกต์",
@@ -93,9 +100,16 @@ export const translations = {
       focusText:
         "การพัฒนา Full-stack โดยมีความสนใจในระบบกระจายและแอปพลิเคชันบล็อกเชน ฉันชอบทำงานตลอดสแต็ก — ตั้งแต่ฐานข้อมูลและ API ไปจนถึงอินเทอร์เฟซส่วนหน้า",
       stack: "เทคโนโลยีที่ใช้",
+      languages: "ภาษาโปรแกรมมิ่ง",
+      frameworks: "เฟรมเวิร์ก",
+      tools: "เครื่องมือและอื่นๆ",
       contact: "ติดต่อฉัน",
       contactText:
         "ฉันเปิดรับการพูดคุยที่น่าสนใจ โอกาสฝึกงาน หรือการทำงานร่วมกันเสมอ อย่าลังเลที่จะติดต่อมา",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      email: "อีเมล",
+      resume: "เรซูเม / ประวัติย่อ",
     },
     footer: {
       built: "สร้างด้วย Next.js & Tailwind CSS",
@@ -112,7 +126,7 @@ export const translations = {
 } as const;
 
 type DeepStringify<T> = {
-  [K in keyof T]: T[K] extends string ? string : DeepStringify<T[K]>
-}
+  [K in keyof T]: T[K] extends string ? string : DeepStringify<T[K]>;
+};
 
-export type Translations = DeepStringify<typeof translations.en>
+export type Translations = DeepStringify<typeof translations.en>;

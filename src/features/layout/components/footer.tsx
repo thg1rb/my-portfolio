@@ -1,6 +1,5 @@
 'use client'
 
-import { Code } from 'lucide-react'
 import { Container } from './container'
 import { useI18n } from '@/src/features/i18n/context'
 
@@ -18,15 +17,6 @@ export function Footer() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.common.github}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <Code className="h-4 w-4" aria-hidden />
-            </a>
             <span className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Bright. {t.footer.rights}
             </span>

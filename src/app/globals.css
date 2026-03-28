@@ -111,6 +111,10 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   html[lang="th"] {
     font-family: var(--font-thai);
@@ -118,6 +122,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: inherit;
+  }
+  body::-webkit-scrollbar {
+    display: none;
   }
   body.font-thai-mode {
     font-family: var(--font-thai) !important;

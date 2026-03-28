@@ -1,6 +1,7 @@
 'use client'
 
 import { useI18n } from '@/src/features/i18n/context'
+import { Languages } from 'lucide-react'
 import { cn } from '@/src/lib/utils'
 
 interface LanguageSwitcherProps {
@@ -11,38 +12,16 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { locale, setLocale, t } = useI18n()
 
   return (
-    <div
-      className={cn('flex items-center gap-1 text-xs font-medium', className)}
-      role="group"
-      aria-label="Language selection"
+    <button
+      onClick={() => setLocale(locale === 'en' ? 'th' : 'en')}
+      aria-label="Switch language"
+      className={cn(
+        'flex h-8 w-12 items-center justify-center gap-1 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground',
+        className
+      )}
     >
-      <button
-        onClick={() => setLocale('en')}
-        aria-pressed={locale === 'en'}
-        className={cn(
-          'rounded px-1.5 py-0.5 transition-colors',
-          locale === 'en'
-            ? 'text-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        )}
-      >
-        {t.common.en}
-      </button>
-      <span className="text-border" aria-hidden>
-        /
-      </span>
-      <button
-        onClick={() => setLocale('th')}
-        aria-pressed={locale === 'th'}
-        className={cn(
-          'rounded px-1.5 py-0.5 transition-colors font-thai',
-          locale === 'th'
-            ? 'text-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        )}
-      >
-        {t.common.th}
-      </button>
-    </div>
+      <Languages className="h-4 w-4" aria-hidden />
+      <span>{t.common[locale as keyof typeof t.common]}</span>
+    </button>
   )
 }

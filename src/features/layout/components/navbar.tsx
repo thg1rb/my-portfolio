@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Code, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '@/src/features/theme/components/theme-toggle'
 import { LanguageSwitcher } from '@/src/features/i18n/components/language-switcher'
 import { Container } from './container'
@@ -63,22 +63,13 @@ export function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-1">
-            <LanguageSwitcher className="hidden sm:flex" />
-            <div className="mx-1 hidden h-4 w-px bg-border sm:block" aria-hidden />
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.common.github}
-              className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <Code className="h-4 w-4" aria-hidden />
-            </a>
-            <ThemeToggle />
+            <LanguageSwitcher className="hidden lg:flex" />
+            <div className="mx-1 hidden h-4 w-px bg-border lg:block" aria-hidden />
+            <ThemeToggle className="hidden lg:flex" />
 
             {/* Mobile hamburger */}
             <button
-              className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label={mobileOpen ? t.nav.closeMenu : t.nav.openMenu}
               aria-expanded={mobileOpen}
@@ -116,8 +107,9 @@ export function Navbar() {
                     </Link>
                   </li>
                 ))}
-                <li className="mt-3 pt-3 border-t border-border">
+                <li className="mt-3 pt-3 border-t border-border flex items-center gap-3">
                   <LanguageSwitcher />
+                  <ThemeToggle />
                 </li>
               </ul>
             </nav>

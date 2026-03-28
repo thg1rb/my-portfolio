@@ -131,12 +131,12 @@ export function Hero() {
           {t.hero.viewProjects}
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
         </Link>
-        <a
-          href="mailto:bright@example.com"
+        <Link
+          href="/about"
           className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
-          {t.hero.contactMe}
-        </a>
+          {t.hero.aboutMe}
+        </Link>
       </motion.div>
     </section>
   )

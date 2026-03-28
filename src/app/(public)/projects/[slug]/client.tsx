@@ -69,7 +69,7 @@ export function ProjectDetailClient({
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <span className="mb-2 inline-block text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              {frontmatter.year}
+              {frontmatter.startDate} - {frontmatter.endDate}
             </span>
             <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               {frontmatter.title}

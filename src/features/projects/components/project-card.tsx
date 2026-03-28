@@ -44,7 +44,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.title}
               </h2>
               <span className="text-xs text-muted-foreground">
-                {project.year}
+                {project.startDate} - {project.endDate}
               </span>
             </div>
             <ArrowUpRight
