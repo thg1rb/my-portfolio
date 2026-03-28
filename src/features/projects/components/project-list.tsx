@@ -15,7 +15,7 @@ export function ProjectList({ projects }: ProjectListProps) {
       aria-label="Project list"
     >
       {projects.map((project, index) => (
-        <div key={project.slug} role="listitem">
+        <div key={project.slug} role="listitem" className='h-full'>
           <ProjectCard project={project} index={index} />
         </div>
       ))}
