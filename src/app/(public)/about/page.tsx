@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { Container } from '@/src/features/layout/components/container'
 import { TechStack } from '@/src/features/projects/components/tech-stack'
 import { useI18n } from '@/src/features/i18n/context'
@@ -43,12 +43,12 @@ const contactLinks = {
   resume: '/resume.pdf',
 }
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, delay, ease: 'easeOut' },
+    transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 

@@ -4,18 +4,18 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Code, ExternalLink, ArrowLeft } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { Container } from '@/src/features/layout/components/container'
 import { TechStack } from '@/src/features/projects/components/tech-stack'
 import { useI18n } from '@/src/features/i18n/context'
 import type { ProjectFrontmatter } from '@/src/features/projects/types'
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, delay, ease: 'easeOut' },
+    transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 
