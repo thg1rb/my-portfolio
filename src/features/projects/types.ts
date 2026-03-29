@@ -3,7 +3,6 @@
 export interface ProjectFrontmatter {
   slug: string;
   title: string;
-  year: string;
   startDate: string;
   endDate: string;
   description: string;

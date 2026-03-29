@@ -1,84 +1,9 @@
 import type { ProjectFrontmatter } from "../types";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-// Static project data - metadata for listing pages
-// Full MDX content is loaded separately on detail pages
-export const projectsData: Record<"en" | "th", ProjectFrontmatter[]> = {
-  en: [
-    {
-      slug: "ku-review",
-      title: "KU Review",
-      year: "2024",
-      startDate: "Jan 2024",
-      endDate: "Mar 2024",
-      description:
-        "A course review platform for Kasetsart University students to share experiences and rate courses.",
-      techStack: ["SvelteKit", "TypeScript", "TailwindCSS", "PostgreSQL"],
-      thumbnail: "/images/ku-review.jpg",
-      github: "https://github.com/bright/ku-review",
-      demo: "https://ku-review.vercel.app",
-    },
-    {
-      slug: "nisit-deeden",
-      title: "NisitDeeden",
-      year: "2023",
-      startDate: "Aug 2023",
-      endDate: "Dec 2023",
-      description:
-        "Student portal mobile app for accessing university resources, events, and scholarships.",
-      techStack: ["Flutter", "Dart", "Firebase", "REST API"],
-      thumbnail: "/images/nisit-deeden.jpg",
-      github: "https://github.com/bright/nisit-deeden",
-    },
-    {
-      slug: "doc-system",
-      title: "Document Management System",
-      year: "2023",
-      startDate: "Jan 2023",
-      endDate: "Jul 2023",
-      description:
-        "Enterprise document workflow system with approval chains and version control.",
-      techStack: ["Laravel", "Vue.js", "MySQL", "Docker"],
-      thumbnail: "/images/doc-system.jpg",
-    },
-  ],
-  th: [
-    {
-      slug: "ku-review",
-      title: "KU Review",
-      year: "2024",
-      startDate: "ม.ค. 2024",
-      endDate: "มี.ค. 2024",
-      description:
-        "แพลตฟอร์มรีวิวรายวิชาสำหรับนิสิตมหาวิทยาลัยเกษตรศาสตร์ แชร์ประสบการณ์และให้คะแนนรายวิชา",
-      techStack: ["SvelteKit", "TypeScript", "TailwindCSS", "PostgreSQL"],
-      thumbnail: "/images/ku-review.jpg",
-      github: "https://github.com/bright/ku-review",
-      demo: "https://ku-review.vercel.app",
-    },
-    {
-      slug: "nisit-deeden",
-      title: "NisitDeeden",
-      year: "2023",
-      startDate: "ส.ค. 2023",
-      endDate: "ธ.ค. 2023",
-      description:
-        "แอปพลิเคชันมือถือสำหรับนิสิต เข้าถึงทรัพยากรมหาวิทยาลัย กิจกรรม และทุนการศึกษา",
-      techStack: ["Flutter", "Dart", "Firebase", "REST API"],
-      thumbnail: "/images/nisit-deeden.jpg",
-      github: "https://github.com/bright/nisit-deeden",
-    },
-    {
-      slug: "doc-system",
-      title: "ระบบจัดการเอกสาร",
-      year: "2023",
-      startDate: "ม.ค. 2023",
-      endDate: "ก.ค. 2023",
-      description: "ระบบจัดการเอกสารองค์กร พร้อมระบบอนุมัติและควบคุมเวอร์ชัน",
-      techStack: ["Laravel", "Vue.js", "MySQL", "Docker"],
-      thumbnail: "/images/doc-system.jpg",
-    },
-  ],
-};
+const CONTENT_DIR = path.join(process.cwd(), "src", "contents", "projects");
 
 const monthMap: Record<string, number> = {
   Jan: 0,
@@ -107,6 +32,24 @@ const monthMap: Record<string, number> = {
   "ธ.ค.": 11,
 };
 
+// Read all project files for a given locale
+function readProjectFiles(locale: "en" | "th"): ProjectFrontmatter[] {
+  const localeDir = path.join(CONTENT_DIR, locale);
+
+  if (!fs.existsSync(localeDir)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(localeDir);
+  const mdxFiles = files.filter((file) => file.endsWith(".mdx"));
+
+  return mdxFiles.map((file) => {
+    const filePath = path.join(localeDir, file);
+    const { data } = matter.read(filePath);
+    return data as ProjectFrontmatter;
+  });
+}
+
 function parseDate(dateStr: string): number {
   const [month, year] = dateStr.split(" ");
   const monthIndex = monthMap[month] ?? 0;
@@ -117,18 +60,20 @@ function parseDate(dateStr: string): number {
 export function getAllProjectsStatic(
   locale: "en" | "th",
 ): ProjectFrontmatter[] {
-  return projectsData[locale].sort(
-    (a, b) => parseDate(b.endDate) - parseDate(a.endDate)
-  );
+  const projects = readProjectFiles(locale);
+  return projects.sort((a, b) => parseDate(b.endDate) - parseDate(a.endDate));
 }
 
 export function getProjectBySlugStatic(
   slug: string,
   locale: "en" | "th",
 ): ProjectFrontmatter | null {
-  return projectsData[locale].find((p) => p.slug === slug) || null;
+  const projects = readProjectFiles(locale);
+  return projects.find((p) => p.slug === slug) || null;
 }
 
 export function getProjectSlugsStatic(): string[] {
-  return projectsData.en.map((p) => p.slug);
+  // Read from English directory to get all slugs
+  const projects = readProjectFiles("en");
+  return projects.map((p) => p.slug);
 }
