@@ -94,6 +94,29 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     em: ({ children }) => (
       <em className="italic text-foreground/90">{children}</em>
     ),
+    // Tables
+    table: ({ children }) => (
+      <div className="my-6 w-full overflow-y-auto">
+        <table className="min-w-full divide-y divide-border">{children}</table>
+      </div>
+    ),
+    thead: ({ children }) => (
+      <thead className="bg-muted/50">{children}</thead>
+    ),
+    tbody: ({ children }) => (
+      <tbody className="divide-y divide-border">{children}</tbody>
+    ),
+    tr: ({ children }) => (
+      <tr className="hover:bg-muted/30 transition-colors">{children}</tr>
+    ),
+    th: ({ children }) => (
+      <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="px-4 py-3 text-sm text-foreground/90">{children}</td>
+    ),
     ...components,
   }
 }

@@ -29,7 +29,7 @@ export const translations = {
       viewSource: "Source",
       techStack: "Tech Stack",
       overview: "Overview",
-      backToProjects: "← Back to projects",
+      backToProjects: "Back to projects",
     },
     about: {
       title: "About",
@@ -89,7 +89,7 @@ export const translations = {
       viewSource: "ซอร์สโค้ด",
       techStack: "เทคโนโลยีที่ใช้",
       overview: "ภาพรวม",
-      backToProjects: "← กลับไปยังโปรเจกต์",
+      backToProjects: "กลับไปยังโปรเจกต์",
     },
     about: {
       title: "เกี่ยวกับฉัน",

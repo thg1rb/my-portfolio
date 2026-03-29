@@ -1,0 +1,90 @@
+---
+slug: mini-dex
+title: Mini Decentralized Exchange
+startDate: มี.ค 2026
+endDate: มี.ค 2026
+description: ระบบ Automated Market Maker (AMM) ขนาดเล็ก สำหรับการแลกเปลี่ยนโทเคนแบบไร้ศูนย์กลาง
+techStack:
+  - Solidity
+  - Ethereum
+  - MetaMask
+  - Remix IDE
+thumbnail: /images/mini-dex/ethereum.png
+github: https://github.com/thg1rb/cefi-defi-final-part-02
+---
+
+## 🎯 วัตถุประสงค์
+
+โปรเจกต์นี้เป็นส่วนหนึ่งของชิ้นงานใน ข้อสอบปลายภาค (Part 2) รายวิชา 01418496 CeFi/DeFi โดยมีวัตถุประสงค์เพื่อสร้างและพัฒนา Decentralized Exchange (DEX) ขนาดเล็ก (Mini-DEX) ในรูปแบบของ Automated Market Maker (AMM) ที่ใช้สมการ Constant-Product สไตล์ Uniswap V2 ระบบถูกออกแบบให้ทำงานและทดสอบบนเครือข่าย Sepolia Testnet โดยมีเป้าหมายการทำงานหลักดังนี้:
+
+- เพื่อให้ผู้ใช้สามารถเพิ่มและถอนสภาพคล่อง (Liquidity) สำหรับโทเคนจำลอง ERC-20 สองชนิด (TokenA และ TokenB) ที่สร้างขึ้นมาในระบบได้
+
+- เพื่อให้ผู้ใช้สามารถแลกเปลี่ยน (Swap) โทเคนไปมาได้ โดยระบบจะรักษาสมดุลของราคาผ่านสมการคงที่ (Constant-Product Invariant)
+
+- ออกแบบให้มีการหักค่าธรรมเนียมการสวอป (Swap Fee) ที่ 0.3% โดยค่าธรรมเนียมดังกล่าวจะถูกสะสมไว้ในพูล (Pool) เพื่อเป็นการสร้างผลตอบแทนและเพิ่มมูลค่าให้กับผู้ให้สภาพคล่อง (Liquidity Providers)
+
+## 🛠️ เครื่องมือพัฒนา
+
+| Layer        | Technology              |
+|--------------|------------------------|
+| Language     | Solidity                   |
+| Network      | Ethereum (Sepolia Testnet)     |
+| Web3 Wallet   | MetaMask               |
+| Editor   | Remix IDE               |
+
+## 📁 รายละเอียดของโค้ด
+
+### 1. [`TokenA.sol`](https://sepolia.etherscan.io/address/0x146253E4e33F68b7866d26F257352a92c03DD442)
+
+ไฟล์ Smart Contract สำหรับสร้างโทเคนมาตรฐาน ERC-20 ตัวแรกเพื่อใช้ในการทดสอบระบบ DEX
+
+- คุณสมบัติของโทเคน: ชื่อ "Alpha Token" (สัญลักษณ์: ALPHA) มีจำนวนทศนิยม 18 ตำแหน่ง
+
+- การสร้างโทเคน (Minting): ในขณะที่ทำการ Deploy สัญญา ระบบจะทำการ Mint โทเคนจำนวน 1,000,000 ALPHA เข้าสู่กระเป๋าของผู้สร้าง (Deployer) ทันที
+
+- ฟังก์ชันการทำงาน: รองรับฟังก์ชันมาตรฐานของ ERC-20 ได้แก่ `transfer`, `approve` และ `transferFrom` โดยไม่มีการเก็บค่าธรรมเนียมในการโอน เพื่อให้ทำงานร่วมกับ DEX ได้อย่างสมบูรณ์
+
+### 2. [`TokenB.sol`](https://sepolia.etherscan.io/address/0xc8a09842bdD879fCFeAB0B86E14d320cA9453613)
+
+ไฟล์ Smart Contract สำหรับสร้างโทเคนมาตรฐาน ERC-20 ตัวที่สองที่มีโครงสร้างการทำงานแบบเดียวกับ TokenA ทุกประการ
+
+- คุณสมบัติของโทเคน: ชื่อ "Beta Token" (สัญลักษณ์: BETA) มีจำนวนทศนิยม 18 ตำแหน่ง
+
+- การสร้างโทเคน (Minting): ผู้สร้างจะได้รับโทเคนเริ่มต้นจำนวน 1,000,000 BETA เมื่อทำการ Deploy สัญญา
+
+- ฟังก์ชันการทำงาน: รองรับฟังก์ชันพื้นฐานของ ERC-20 เพื่อใช้เป็นคู่เหรียญ (Trading Pair) ในการสวอปและให้สภาพคล่องร่วมกับ TokenA
+
+### 3. [`MiniDEX.sol`](https://sepolia.etherscan.io/address/0x77AF448d9ad535642786565c6D6d03D26940e480)
+
+- ไฟล์ Smart Contract หลักที่ทำหน้าที่เป็นศูนย์ซื้อขายแลกเปลี่ยนแบบไร้ศูนย์กลาง (Decentralized Exchange)
+
+- การจัดการสภาพคล่อง (`addLiquidity` / `removeLiquidity`):
+
+    - ผู้ให้สภาพคล่องรายแรกจะเป็นผู้กำหนดอัตราส่วนราคาของพูล
+
+    - สำหรับผู้ให้สภาพคล่องรายถัดไป ระบบจะบังคับให้ต้องฝากเหรียญเข้ามาในอัตราส่วนที่เท่ากับ Pool Reserve ปัจจุบันอย่างเคร่งครัด
+
+    - ระบบมีการคำนวณและแจกจ่ายเหรียญ LP (Liquidity Provider Tokens) เพื่อบันทึกสัดส่วนความเป็นเจ้าของในพูล ซึ่งผู้ใช้สามารถนำมาคืนเพื่อถอน TokenA และ TokenB กลับไปตามสัดส่วนได้
+
+- กลไกการแลกเปลี่ยน (`swapAforB` / `swapBforA`):
+
+    - รองรับการแลกเปลี่ยนเหรียญทั้งสองฝั่ง โดยใช้หลักการ Constant-Product Invariant ในการกำหนดจำนวนเหรียญที่ผู้ใช้จะได้รับ
+
+        - กลไกค่าธรรมเนียม (Fee Mechanism): ทุกๆ การแลกเปลี่ยนจะถูกหักค่าธรรมเนียม 0.3% (คำนวณจากยอด 997/1000) โดยจำนวนเหรียญที่ถูกหักจะยังคงค้างอยู่ใน Pool Reserve เพื่อเพิ่มมูลค่าให้กับพูล
+
+    - การตรวจสอบราคา (`getPriceOfAinB`): มีฟังก์ชันสำหรับเช็คราคาของ TokenA 1 เหรียญเทียบกับ TokenB ตามสภาวะของพูลในปัจจุบัน
+
+## Transaction History (Sepolia Testnet)
+
+ตารางด้านล่างนี้แสดงประวัติและหลักฐานการทำธุรกรรมทั้งหมดในขั้นตอนการทดสอบระบบ:
+
+| รายการธุรกรรม        | รายละเอียดการทำงาน             | ลิงก์ |
+|--------------|------------------------|----------|
+| Deploy TokenA |	Deploy the Smart Contract for TokenA |	[0x146253E4e33F68b7866d26F257352a92c03DD442](https://sepolia.etherscan.io/address/0x146253E4e33F68b7866d26F257352a92c03DD442)  |
+| Deploy TokenB |	Deploy the Smart Contract for TokenB |	[0xc8a09842bdD879fCFeAB0B86E14d320cA9453613](https://sepolia.etherscan.io/address/0xc8a09842bdD879fCFeAB0B86E14d320cA9453613) |
+| Deploy MiniDEX |	Deploy the core DEX Smart Contract | [0x77AF448d9ad535642786565c6D6d03D26940e480](https://sepolia.etherscan.io/address/0x77AF448d9ad535642786565c6D6d03D26940e480) |
+| Approve Tokens |	Allow MiniDEX to spend TokenA and TokenB |	[TokenA: 0xe6b565c856ad5000e5e5f51d742c87e5f8c2757ee3e34bfe6eee5beb9e6074ea](https://sepolia.etherscan.io/tx/0xe6b565c856ad5000e5e5f51d742c87e5f8c2757ee3e34bfe6eee5beb9e6074ea) <br /> [TokenB: 0x5acbf155ce15004e459c4fd350de1816a67a03246857b53b620ae7df55b1c74c](https://sepolia.etherscan.io/tx/0x5acbf155ce15004e459c4fd350de1816a67a03246857b53b620ae7df55b1c74c)  |
+| Add Liquidity	| Add initial liquidity to the pool | [0x600cd045d625d0b307396f631c976700d1d485e2a87874bb5e388de9efdca668](https://sepolia.etherscan.io/tx/0x600cd045d625d0b307396f631c976700d1d485e2a87874bb5e388de9efdca668) |
+| Remove Liquidity	| Withdraw liquidity and receive accumulated fees |	[0x477153e50a84f04790fd46187118a7addfa6a9159dd5707dc859d9ec78af93cc](https://sepolia.etherscan.io/tx/0x477153e50a84f04790fd46187118a7addfa6a9159dd5707dc859d9ec78af93cc) |
+| Swap A for B |	Swap TokenA for TokenB | [0xafbe06dac689e6f6fc91fcb1f4eb50fa9802d3bf2844f7f81a2b2672473f4645](https://sepolia.etherscan.io/tx/0xafbe06dac689e6f6fc91fcb1f4eb50fa9802d3bf2844f7f81a2b2672473f4645) |
+| Swap B for A |	Swap TokenB for TokenA | [0x0d6fa233d940cfbf087bbf969b551341bedc4ed126d2e982842e9031a4ff44f9](https://sepolia.etherscan.io/tx/0x0d6fa233d940cfbf087bbf969b551341bedc4ed126d2e982842e9031a4ff44f9) |

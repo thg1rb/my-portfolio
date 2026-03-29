@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import {
   getProjectBySlugStatic,
   getProjectSlugsStatic,
@@ -35,10 +36,26 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   // Pre-render MDX content on the server
   const contentEn = contentEnSource ? (
-    <MDXRemote source={contentEnSource} components={components} />
+    <MDXRemote
+      source={contentEnSource}
+      components={components}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+      }}
+    />
   ) : null
   const contentTh = contentThSource ? (
-    <MDXRemote source={contentThSource} components={components} />
+    <MDXRemote
+      source={contentThSource}
+      components={components}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+      }}
+    />
   ) : null
 
   return (
