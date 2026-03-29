@@ -42,6 +42,7 @@ export const translations = {
       stack: "Tech Stack",
       languages: "Programming Languages",
       frameworks: "Frameworks",
+      databases: "Databases",
       tools: "Tools & Others",
       contact: "Get in touch",
       contactText:
@@ -102,6 +103,7 @@ export const translations = {
       stack: "เทคโนโลยีที่ใช้",
       languages: "ภาษาโปรแกรมมิ่ง",
       frameworks: "เฟรมเวิร์ก",
+      databases: "ฐานข้อมูล",
       tools: "เครื่องมือและอื่นๆ",
       contact: "ช่องทางการติดต่อ",
       contactText: "สามารถติดต่อได้ตลอด 24 ชั่วโมง ยินดีพูดคุยในทุกโอกาส",

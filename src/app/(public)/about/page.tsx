@@ -10,30 +10,50 @@ import { GithubIcon, LinkedinIcon } from '@/src/components/icons'
 const programmingLanguages = [
   'TypeScript',
   'JavaScript',
-  'Solidity',
-  'SQL',
-  'Python',
+  'PHP',
+  'Golang',
+  'Dart',
   'Java',
+  'Python',
+  'C',
+  'C++',
+  'SQL',
+  'Solidity',
+  'Shell Script',
 ]
 
 const frameworks = [
   'Next.js',
   'React',
+  'Tailwind CSS',
+  'ExpressJS',
   'Svelte',
-  'SvelteKit',
   'Laravel',
+  'Gin',
+  'Go Fiber',
   'Spring Boot',
+  'JavaFX',
+  'Flutter',
 ]
 
-const tools = [
+const databases = [
   'PostgreSQL',
   'MySQL',
   'Redis',
-  'Tailwind CSS',
+  'Firestore',
+]
+
+const tools = [
   'Docker',
+  'Kubernetes',
   'Git',
-  'Ethereum',
-  'Node.js',
+  'GitHub',
+  'Firebase',
+  'Supabase',
+  'Figma',
+  'Jira',
+  'ClickUp',
+  'Notion',
 ]
 
 const contactLinks = {
@@ -126,6 +146,14 @@ export default function AboutPage() {
             {t.about.frameworks}
           </h3>
           <TechStack stack={frameworks} size="md" />
+        </div>
+
+        {/* Databases */}
+        <div className="mb-8">
+          <h3 className="mb-3 text-sm font-medium text-foreground">
+            {t.about.databases}
+          </h3>
+          <TechStack stack={databases} size="md" />
         </div>
 
         {/* Tools */}
