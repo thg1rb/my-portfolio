@@ -25,12 +25,12 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Bright — CS Student & Full-Stack Developer',
+  title: 'Bright\'s Portfolio',
   description:
-    'Portfolio of Bright, a Computer Science student at Kasetsart University specializing in full-stack development with Svelte, Laravel, Spring Boot, and Blockchain.',
+    'Portfolio of Bright, a Computer Science student at Kasetsart University specializing in software development.',
   generator: 'v0.app',
   openGraph: {
-    title: 'Bright — CS Student & Full-Stack Developer',
+    title: 'Bright\'s Portfolio',
     description:
       'Portfolio of Bright, a Computer Science student at Kasetsart University.',
     type: 'website',

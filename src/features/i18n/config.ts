@@ -74,7 +74,7 @@ export const translations = {
     },
     hero: {
       greeting: "สวัสดีครับ! ผมชื่อ",
-      name: "ไบรท์",
+      name: "ไบร์ท",
       role: "นักศึกษาวิทยาการคอมพิวเตอร์",
       university: "มหาวิทยาลัยเกษตรศาสตร์",
       intro:
@@ -113,7 +113,7 @@ export const translations = {
       resume: "เรซูเม / ประวัติย่อ",
     },
     footer: {
-      built: "สร้างด้วย Next.js & Tailwind CSS",
+      built: "สร้างด้วย ใจ 💕 & ความมุ่งมั่น 🚀",
       rights: "สงวนลิขสิทธิ์",
     },
     common: {
