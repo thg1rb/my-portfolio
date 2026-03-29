@@ -35,17 +35,17 @@ export const translations = {
       title: "About",
       subtitle: "A bit about who I am.",
       intro:
-        "I'm Bright, a Computer Science student at Kasetsart University in Bangkok, Thailand. I'm deeply interested in building modern web applications and exploring the intersection of software engineering and blockchain technology.",
+        "Greetings to everyone who happens upon this website; I am Bowornrat Tangnararatchakit, or “Bright,” a third-year Computer Science student at Kasetsart University (Bangkhen Campus) who finds joy in transforming abstract concepts into tangible entities or functional products (even if a significant portion of my time is consumed by debugging—but I actually enjoy it 👾).",
       focus: "Current Focus",
       focusText:
-        "Full-stack development with a strong interest in distributed systems and blockchain applications. I enjoy working across the entire stack — from databases and APIs to frontend interfaces.",
+        "I’m passionate about Software Development, primarily focusing on building Web, Mobile, and Desktop applications. I care about designing systems that are clean, flexible, and scalable, while also delivering a great user experience. I believe that “a good application shouldn’t just work — it should solve real user problems and be ready to adapt to change.”",
       stack: "Tech Stack",
       languages: "Programming Languages",
       frameworks: "Frameworks",
       tools: "Tools & Others",
       contact: "Get in touch",
       contactText:
-        "I'm always open to interesting conversations, internship opportunities, or collaborations. Feel free to reach out.",
+        "Feel free to reach out anytime — I’m always open to opportunities and conversations.",
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "Email",
@@ -93,19 +93,18 @@ export const translations = {
     },
     about: {
       title: "เกี่ยวกับฉัน",
-      subtitle: "เล็กน้อยเกี่ยวกับตัวฉัน",
+      subtitle: "รายละเอียดเล็กน้อยที่เกี่ยวกับฉัน",
       intro:
-        "ฉันคือไบรท์ นักศึกษาวิทยาการคอมพิวเตอร์ที่มหาวิทยาลัยเกษตรศาสตร์ กรุงเทพมหานคร ประเทศไทย ฉันสนใจการพัฒนาเว็บแอปพลิเคชันสมัยใหม่และการสำรวจจุดตัดระหว่างวิศวกรรมซอฟต์แวร์และเทคโนโลยีบล็อกเชน",
-      focus: "โฟกัสปัจจุบัน",
+        "สวัสดีทุกท่านที่แวะผ่านเข้ามาในเว็บไซต์นี้ ผมบวรรัตน์ ตั้งนรารัชชกิจ หรือ “ไบร์ท” นักศึกษาชั้นปีที่ 3 สาขาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยเกษตรศาสตร์ (วิทยาเขตบางเขน) ผู้ที่สนุกกับการเปลี่ยนไอเดียสุดแสนจะนามธรรมในหัวให้กลายเป็นสิ่งที่จับต้องได้ หรือโปรดักต์ที่ใช้งานได้จริง (แม้ว่าเวลาส่วนหนึ่งจะหมดไปกับการ debug ก็ตาม—but I actually enjoy it 👾)",
+      focus: "สิ่งที่โฟกัส",
       focusText:
-        "การพัฒนา Full-stack โดยมีความสนใจในระบบกระจายและแอปพลิเคชันบล็อกเชน ฉันชอบทำงานตลอดสแต็ก — ตั้งแต่ฐานข้อมูลและ API ไปจนถึงอินเทอร์เฟซส่วนหน้า",
+        "ผมมีความสนใจหลักและโฟกัสในด้าน Software Development โดยมุ่งเน้นการพัฒนา Web, Mobile และ Desktop Applications เป็นหลัก ในการพัฒนา ผมให้ความสำคัญกับการออกแบบระบบที่มีโครงสร้างชัดเจน ยืดหยุ่น และสามารถต่อยอดได้ในอนาคต พร้อมทั้งมอบประสบการณ์ที่ดีให้กับผู้ใช้งาน เพราะผมเชื่อว่า “Application ที่ดีไม่ใช่เพียงแค่สามารถทำงานได้เท่านั้น แต่ต้องตอบโจทย์และแก้ปัญหาของผู้ใช้งาน และพร้อมปรับตัวต่อการเปลี่ยนแปลง”",
       stack: "เทคโนโลยีที่ใช้",
       languages: "ภาษาโปรแกรมมิ่ง",
       frameworks: "เฟรมเวิร์ก",
       tools: "เครื่องมือและอื่นๆ",
-      contact: "ติดต่อฉัน",
-      contactText:
-        "ฉันเปิดรับการพูดคุยที่น่าสนใจ โอกาสฝึกงาน หรือการทำงานร่วมกันเสมอ อย่าลังเลที่จะติดต่อมา",
+      contact: "ช่องทางการติดต่อ",
+      contactText: "สามารถติดต่อได้ตลอด 24 ชั่วโมง ยินดีพูดคุยในทุกโอกาส",
       github: "GitHub",
       linkedin: "LinkedIn",
       email: "อีเมล",

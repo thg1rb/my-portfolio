@@ -37,10 +37,10 @@ const tools = [
 ]
 
 const contactLinks = {
-  github: 'https://github.com/yourusername',
-  linkedin: 'https://linkedin.com/in/yourusername',
-  email: 'mailto:bright@example.com',
-  resume: '/resume.pdf',
+  github: 'https://github.com/thg1rb',
+  linkedin: 'https://www.linkedin.com/in/bowornrat/',
+  email: 'mailto:bowornrat.t@hotmail.com',
+  resume: 'https://drive.google.com/file/d/1nclWeYKwdHbMCg3QrmgXKL0eeM4vapDt/view?usp=sharing',
 }
 
 const fadeUp: Variants = {
