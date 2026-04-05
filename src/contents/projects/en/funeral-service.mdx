@@ -1,0 +1,94 @@
+---
+slug: funeral-service
+title: Funeral Service
+startDate: Feb 2026
+endDate: Mar 2026
+description: A comprehensive funeral management system that brings every step together in one place to reduce the burden and complexity for bereaved families during difficult times.
+techStack:
+    - NextJS
+    - TypeScript
+    - TailwindCSS
+thumbnail: /images/funeral-service/thumbnail.jpg
+github: https://github.com/thg1rb/funeral-service-frontend.git
+demo: https://funeral-service-frontend-flame.vercel.app
+---
+
+## 🎯 Objective
+
+This project is part of the course **01418371-65 Project Management and Digital Startup** at the Department of Computer Science, Kasetsart University. It originated from a simple question: _"How do we organize a funeral?"_ For those without prior experience, it is often difficult to understand the preparation process or know which services need to be coordinated during a time of grief.
+
+This project aims to develop a platform that serves as a centralized solution for facilitating, planning, and managing funeral services end-to-end. It supports arrangements for both humans and pets. The system is designed to reduce complexity and ease the burden on bereaved families, while also allowing users to control budgets, manage expenses transparently, and make the "final day" meaningful without being overwhelmed by complicated details.
+
+> **📌** Since this course focuses more on operations than software development, and due to limited development time, our team chose to build a frontend-only prototype and used LocalStorage instead of a backend to simulate real-world usage.
+
+## 🛠️ Tech Stack
+
+| Layer      | Technology          |
+| ---------- | ------------------- |
+| Language   | TypeScript          |
+| Framework  | NextJS, TailwindCSS |
+| Deployment | Vercel              |
+
+> **📌 Why this tech stack?** These technologies are familiar to the development team (including myself), allowing us to work efficiently and develop the project quickly.
+
+## 💻 Core Features
+
+The system is divided into two main roles: general users and administrators:
+
+### 1. General Users
+
+- Choose the type of service: for humans or pets
+- Select a predefined package or customize products and services based on budget and preferences (Customization)
+- Add optional additional services
+- Search and select venues, sorted by nearest distance
+- Check availability of dates and time slots
+- Provide necessary information and complete payment through the system
+- Read articles from administrators for guidance and information about funeral arrangements
+
+### 2. Administrators
+
+- Log in to access the management system
+- Review, manage, and update customer orders
+- Manage and edit partner information (vendors, decorations, venues)
+- Manage and update package details, products, and pricing
+- Create, edit, delete, and manage articles within the system
+
+## 🧑🏻‍💻 Development Process
+
+As mentioned earlier, this course emphasizes teamwork and process over just product development. Our team leveraged AI as a tool for more than 60% of the project. The prototype development process is as follows:
+
+1. Start by converting requirements into prompts for AI (V0 and Lovable) to generate the first prototype version, ensuring all team members align on direction, UI, and features.
+
+2. Evaluate the AI-generated output together to identify what works well, what needs improvement, and what additional features are required (this step also helps validate the clarity of our requirements).
+
+3. Refine and iterate with the same AI by crafting better prompts. Since we used a free plan with token limitations, prompt planning had to be efficient and precise.
+
+4. The development team then implemented and refined the prototype to better match the requirements. Tasks were divided by features, with continuous testing, improvement, and important refactoring of AI-generated code as complexity increased.
+
+5. Integrate all features and finalize the current complete prototype.
+
+## 💡 Key Learnings
+
+- **Breaking traditional development boundaries with AI:** This project provided an opportunity to explore a new software development approach. Using AI significantly reduced development time by more than half. However, the key to effectively using AI is not just prompting, but deeply understanding _"what we want"_, _"what we are building"_, and _"what the final outcome should be"_ in order to fully leverage its capabilities.
+
+- **The art of negotiation and finding balance:** We learned the importance of balancing team capacity with stakeholder expectations. When realizing that deadlines might not be met, forcing progress could do more harm than good. Effective communication and negotiation are crucial to reaching realistic agreements that satisfy all parties.
+
+> **📌** Personally, I believe this project still has strong potential for further development, and it may be continued more seriously in the future.
+
+## 👾 Installation & Running
+
+```bash
+git clone https://github.com/thg1rb/funeral-service-frontend.git
+```
+
+```bash
+cd funeral-service-frontend
+```
+
+```bash
+pnpm i
+```
+
+```bash
+pnpm dev
+```

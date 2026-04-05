@@ -29,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     // Lists
     ul: ({ children }) => (
-      <ul className="mb-4 space-y-2 pl-4" role="list">
+      <ul className="mb-4 list-disc space-y-2 pl-6 marker:text-highlight" role="list">
         {children}
       </ul>
     ),
@@ -38,10 +38,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </ol>
     ),
-    li: ({ children }) => (
-      <li className="flex items-start gap-2.5 text-sm text-foreground">
-        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-highlight" aria-hidden />
-        <span>{children}</span>
+    li: ({ children, ...props }) => (
+      <li {...props} className="ml-2 text-foreground text-base leading-relaxed">
+        {children}
       </li>
     ),
     // Links
