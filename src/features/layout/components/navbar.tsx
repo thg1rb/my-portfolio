@@ -38,7 +38,7 @@ export function Navbar() {
             href="/"
             className="text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-70"
           >
-            bright.dev
+            bright.xyz
           </Link>
 
           {/* Desktop nav links */}

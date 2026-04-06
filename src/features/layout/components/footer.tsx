@@ -20,7 +20,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-center sm:text-left">
             <p className="text-lg font-semibold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              bright.dev
+              bright.xyz
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
               {t.footer.built}
