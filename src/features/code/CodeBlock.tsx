@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { Copy, Check } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/src/lib/utils'
@@ -11,29 +11,24 @@ interface CodeBlockProps {
   className?: string
 }
 
-export function CodeBlock({ code, language = 'text', className }: CodeBlockProps) {
-  const [copied, setCopied] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const [highlightedCode, setHighlightedCode] = useState('')
-  const { theme, systemTheme } = useTheme()
+// Singleton pattern for Shiki highlighter
+let highlighterInstance: any = null
+let highlighterPromise: Promise<any> | null = null
+let isInitializing = false
 
-  // Debug: log props
-  console.log('CodeBlock received:', {
-    codeLength: code?.length || 0,
-    language,
-    codePreview: code?.substring(0, 50)
-  })
+function getHighlighter(): Promise<any> {
+  if (highlighterInstance) {
+    return Promise.resolve(highlighterInstance)
+  }
 
-  // Get the actual theme (resolving 'system' to actual value)
-  const resolvedTheme = theme === 'system' ? systemTheme : theme
-  const isDark = resolvedTheme === 'dark'
+  if (highlighterPromise) {
+    return highlighterPromise
+  }
 
-  // Initialize Shiki and highlight code
-  useEffect(() => {
-    setMounted(true)
-    console.log('CodeBlock: Initializing Shiki for language:', language)
-    import('shiki').then(({ createHighlighter }) => {
-      createHighlighter({
+  if (!isInitializing) {
+    isInitializing = true
+    highlighterPromise = import('shiki').then(({ createHighlighter }) => {
+      return createHighlighter({
         themes: ['github-light', 'github-dark'],
         langs: [
           'javascript',
@@ -72,13 +67,51 @@ export function CodeBlock({ code, language = 'text', className }: CodeBlockProps
           'xml',
         ],
       }).then((highlighter) => {
-        console.log('CodeBlock: Shiki loaded successfully')
+        highlighterInstance = highlighter
+        isInitializing = false
+        return highlighter
+      })
+    })
+  }
+
+  return highlighterPromise!
+}
+
+export function CodeBlock({ code, language = 'text', className }: CodeBlockProps) {
+  const [copied, setCopied] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [highlightedCode, setHighlightedCode] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const { theme, systemTheme } = useTheme()
+
+  // Get the actual theme (resolving 'system' to actual value)
+  const resolvedTheme = theme === 'system' ? systemTheme : theme
+  const isDark = resolvedTheme === 'dark'
+
+  // Cache key for the highlighted code
+  const cacheKey = useMemo(() => `${code}-${language}-${isDark ? 'dark' : 'light'}`, [code, language, isDark])
+
+  // Initialize Shiki and highlight code
+  useEffect(() => {
+    setMounted(true)
+
+    // If we already have the highlighted code for this cache key, skip
+    if (highlightedCode && cacheKey) {
+      setIsLoading(false)
+      return
+    }
+
+    setIsLoading(true)
+    getHighlighter().then((highlighter) => {
+      if (!highlighter) {
+        setIsLoading(false)
+        return
+      }
+      try {
         const html = highlighter.codeToHtml(code, {
           lang: language === 'text' ? 'plaintext' : language,
           theme: isDark ? 'github-dark' : 'github-light',
         })
-
-        console.log('CodeBlock: Generated HTML length:', html.length)
 
         // Extract the inner HTML from shiki's output
         const parser = new DOMParser()
@@ -87,15 +120,16 @@ export function CodeBlock({ code, language = 'text', className }: CodeBlockProps
 
         if (preElement) {
           setHighlightedCode(preElement.innerHTML)
-          console.log('CodeBlock: Set highlighted code')
-        } else {
-          console.error('CodeBlock: Could not find pre element in Shiki output')
         }
-      }).catch((err) => {
-        console.error('CodeBlock: Failed to load Shiki:', err)
-      })
+      } catch (err) {
+        console.error('Failed to highlight code:', err)
+        // Fallback to plain code if highlighting fails
+        setHighlightedCode('')
+      } finally {
+        setIsLoading(false)
+      }
     })
-  }, [code, language, isDark])
+  }, [code, language, isDark, cacheKey])
 
   const handleCopy = async () => {
     try {
@@ -171,7 +205,9 @@ export function CodeBlock({ code, language = 'text', className }: CodeBlockProps
             : '[&_.shiki]:bg-transparent [&_.shiki]:text-foreground/90'
         )}
       >
-        {highlightedCode ? (
+        {isLoading ? (
+          <code className="font-mono text-sm text-foreground">{code}</code>
+        ) : highlightedCode ? (
           <code
             className="font-mono text-sm"
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
@@ -186,23 +222,12 @@ export function CodeBlock({ code, language = 'text', className }: CodeBlockProps
 
 // Pre component wrapper for MDX (client component)
 export function PreComponent({ code, language, children, ...props }: any) {
-  // Debug: log what props we're receiving
-  console.log('PreComponent received:', {
-    hasCode: !!code,
-    codeLength: code?.length || 0,
-    hasLanguage: !!language,
-    language,
-    hasChildren: !!children,
-    codePreview: code?.substring(0, 50)
-  })
-
   // If code and language are provided (server-side extraction), use CodeBlock component
   if (code && language) {
     return <CodeBlock code={code} language={language} {...props} />
   }
 
   // Fallback to default pre element (for inline code or when extraction failed)
-  console.log('PreComponent falling back to default pre element')
   return (
     <pre
       className="mb-4 overflow-x-auto rounded-lg border border-border bg-card p-4 font-mono text-sm"

@@ -8,14 +8,6 @@ export function extractCodeFromPre(children: React.ReactNode): {
   let code = ''
   let language = 'text'
 
-  // Debug: log what we're receiving
-  console.log('extractCodeFromPre received:', {
-    children,
-    childrenType: typeof children,
-    isArray: Array.isArray(children),
-    isValidElement: React.isValidElement(children)
-  })
-
   // Helper function to get text content from any React node
   const getTextContent = (node: React.ReactNode): string => {
     if (typeof node === 'string') return node
@@ -34,26 +26,11 @@ export function extractCodeFromPre(children: React.ReactNode): {
       const props = node.props as { children?: React.ReactNode; className?: string }
       const className = props.className || ''
 
-      // Debug: log the element
-      console.log('Checking element:', {
-        type: node.type,
-        className,
-        hasChildren: !!props?.children
-      })
-
       // Check if this is a code element
       if (node.type === 'code' || (typeof node.type !== 'string' && (node.type as any).name === 'code')) {
         const langMatch = className.match(/language-(\w+)/)
         const lang = langMatch ? langMatch[1] : 'text'
         const codeText = getTextContent(props?.children)
-
-        // Debug: log the found code element
-        console.log('Found code element:', {
-          language: lang,
-          codeLength: codeText.length,
-          codePreview: codeText.substring(0, 50)
-        })
-
         return { code: codeText, language: lang }
       }
 
@@ -84,13 +61,6 @@ export function extractCodeFromPre(children: React.ReactNode): {
     // Fallback: try to get text content directly from children
     code = getTextContent(children)
   }
-
-  // Debug: log the final result
-  console.log('extractCodeFromPre result:', {
-    codeLength: code.length,
-    language,
-    codePreview: code.substring(0, 50)
-  })
 
   return { code, language }
 }
