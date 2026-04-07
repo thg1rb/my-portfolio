@@ -53,7 +53,7 @@ export const translations = {
       resume: "Resume / CV",
     },
     footer: {
-      built: "Built with Next.js & Tailwind CSS",
+      built: "Made with heart 💕 & commitment 🚀",
       rights: "All rights reserved.",
     },
     common: {
