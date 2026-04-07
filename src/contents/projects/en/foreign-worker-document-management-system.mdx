@@ -1,0 +1,138 @@
+---
+slug: foreign-worker-document-management-system
+title: FWDMS
+startDate: Jul 2025
+endDate: Oct 2025
+description: A foreign worker document management system designed to help manage employer and worker data, track document status in real-time, and reduce errors in the workflow.
+techStack:
+    - NextJS
+    - TailwindCSS
+    - Spring Boot
+    - PostgreSQL
+thumbnail: /images/foreign-worker-document-management-system/thumbnail.png
+github: https://github.com/thg1rb/mtf-frontend
+---
+
+## 🎯 Objectives
+
+This project is a part of the course **01418321-65 System Analysis and Design** at the Department of Computer Science, Kasetsart University. The system was developed to solve problems for MTF Manpower Co., Ltd., a business managing the legal import of foreign workers (Myanmar, Laos, Vietnam) into Thailand, which is owned by a close associate of a group member.
+
+Since managing foreign worker import documents involves multiple steps and requires continuous status tracking with high accuracy and precision, the traditional workflow caused the following problems:
+
+- **Unsystematic data storage:** Employer and worker data are mixed, making searching and accessing data time-consuming and risking data loss.
+- **Device limitations:** Data is stored on a single computer, making it impossible to access or verify data from other devices.
+- **Lack of a status tracking system:** It is difficult to check whose documents are expiring or what stage the process has reached.
+- **Redundancy in work:** Data must be entered repeatedly in various processes because there is no automatic recording and retrieval of data.
+- **Errors in issuing financial documents:** Issuing bills or receipts must be checked manually, and there is no systematic storage of expense data.
+
+To solve these problems, my team members and I initiated the development of the **Foreign Worker Document Management System (FWDMS)**. The main goal is to use technology to increase workflow efficiency, making it more systematic, faster, and more accurate.
+
+## 🧑🏻‍💻 Roles and Responsibilities
+
+In this project, I took on the role of Project Leader, with the following main responsibilities:
+
+- **Project Management:** Managing the project, distributing and tracking work progress within the team, and acting as the main coordinator with the business representatives.
+- **Design & System Analysis:** Designing the user experience and user interface (UX/UI), and designing the database structure (ER-Diagram).
+- **Development:** Developing the entire Frontend and developing the Authentication & Authorization system in the Backend.
+
+## 🛠️ Study and Development Process
+
+The scope of this course focuses on understanding the business context, analyzing problems, and designing solutions systematically using technology. The team went through processes ranging from:
+
+- Requirement Gathering directly from business representatives.
+- Analyzing and designing the system through diagrams such as AS-IS & TO-BE Business Process, Sequence Diagram, Class Diagram, and ER-Diagram before starting actual software development.
+
+> **🙏** This project would not have been successfully completed without the courtesy of the company's employee representatives, who spared their valuable time to provide in-depth information and fully cooperated with our team. The organizers would like to express our gratitude here.
+
+## 🛠️ Tech Stack
+
+| Layer   | Technology                     |
+| -------- | ------------------------------- |
+| Frontend| NextJS, TailwindCSS, TypeScript|
+| Backend | Java, Spring Boot              |
+| Database| PostgreSQL                     |
+
+## 💻 Key Features
+
+The system divides access rights into 2 main roles as follows:
+
+### 1. Agent
+
+- **Manage Workflow:** Supports the main workflows of the business, such as registering new workers and renewing work permits.
+- **Manage Employer Data:** Records and manages employer data.
+- **Manage Worker Data:** Records and manages data of workers or foreign workers.
+- **Manage Financial Documents:** Manages the receipt issuance system.
+- **Status Tracking System:** Tracks the operational status and document expiration dates of each worker.
+
+### 2. Administrator
+
+- **Manage Operator Accounts:** Manages the access rights and data of operators in the system.
+
+## 🔁 Team Work Process
+
+To ensure smooth system development that meets the needs of actual users, during weeks with significant progress, I schedule appointments with company representatives every Monday at 1:00 PM to present the work developed that week and listen to feedback, aiming to improve the system to best meet usage requirements.
+
+Additionally, the team holds internal update meetings every Monday at 6:00 PM or 7:00 PM to report each member's progress, plan, distribute work for the next phase, and collaboratively solve problems each member encountered daily, keeping the project moving forward continuously.
+
+## 💡 Lessons Learned
+
+- **Understanding the business must come before development:** In the early stages, the team focused on rapid system development without fully understanding the Business Logic. The result was a system that could not accurately solve the problems. We had to step back, look at the big picture again, and study and understand the business processes in detail. With the help of company representatives who explained the workflows, we realized that understanding the business is the most critical foundation of development.
+- **Proactive communication is key:** During the initial development phase, I distributed tasks and waited to review the progress when due, which meant I was unaware of problems that occurred along the way. Later, I adjusted the management method by focusing more on daily communication, such as asking team members, _"How is the assigned work going?"_, _"Are you stuck on anything?"_, or _"Do you need any help?"_. This adjustment helped reduce work bottlenecks and allowed the project to move forward more efficiently.
+
+## 👾 Installation & Execution
+
+### Backend Setup
+
+1. Clone the Backend Repository
+
+```sh
+git clone https://github.com/aockgonnabefree/mtf-backend
+```
+
+2. Enter the project folder
+
+```sh
+cd mtf-backend
+```
+
+3. Create an Environment Variables file by copying the template from `.env.example`
+
+> Don't forget to check and edit the variables in the .env file to match your environment.
+
+```sh
+cp .env.example .env
+```
+
+4. Start the Database via Docker
+
+```sh
+docker compose up -d db
+```
+
+5. Open IntelliJ to run the Java Spring Boot code
+
+### Frontend Setup
+
+1. Clone the Frontend Repository
+
+```sh
+git clone [https://github.com/thg1rb/mtf-frontend](https://github.com/thg1rb/mtf-frontend)
+```
+
+2. Enter the project folder
+
+```sh
+cd mtf-frontend
+```
+
+3. Install Dependencies (required packages)
+
+```sh
+bun install
+```
+
+4. Run Development Server
+
+```sh
+bun run dev
+```
