@@ -1,6 +1,8 @@
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { PreWrapper } from '@/src/features/code/PreWrapper'
+import { cn } from '@/src/lib/utils'
 
 // Custom MDX components for project detail pages
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -54,17 +56,31 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Link>
     ),
-    // Code
-    code: ({ children }) => (
-      <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-        {children}
-      </code>
-    ),
-    pre: ({ children }) => (
-      <pre className="mb-4 overflow-x-auto rounded-lg border border-border bg-card p-4 font-mono text-sm">
-        {children}
-      </pre>
-    ),
+    // Inline Code
+    code: ({ className, children, ...props }: any) => {
+      // Check if this is a code block (has language className)
+      const isCodeBlock = className?.includes('language-')
+
+      if (isCodeBlock) {
+        return <code className={className} {...props}>{children}</code>
+      }
+
+      return (
+        <code
+          className={cn(
+            'rounded-md px-1.5 py-0.5 font-mono text-sm',
+            'bg-muted/50 text-foreground',
+            'border border-border/50',
+            'dark:bg-muted/30 dark:border-border/30',
+            'shadow-sm'
+          )}
+          {...props}
+        >
+          {children}
+        </code>
+      )
+    },
+    pre: PreWrapper,
     // Blockquote
     blockquote: ({ children }) => (
       <blockquote className="mb-4 border-l-2 border-highlight pl-4 text-muted-foreground italic">
