@@ -51,6 +51,12 @@ function readProjectFiles(locale: "en" | "th"): ProjectFrontmatter[] {
 }
 
 function parseDate(dateStr: string): number {
+  // Handle "Present" (EN) and "ปัจจุบัน" (TH) for ongoing projects
+  if (dateStr === "Present" || dateStr === "ปัจจุบัน") {
+    // Use a very large number to ensure Present projects sort to the top
+    return 9999 * 12;
+  }
+
   const [month, year] = dateStr.split(" ");
   const monthIndex = monthMap[month] ?? 0;
   const yearNum = parseInt(year, 10);
@@ -61,7 +67,13 @@ export function getAllProjectsStatic(
   locale: "en" | "th",
 ): ProjectFrontmatter[] {
   const projects = readProjectFiles(locale);
-  return projects.sort((a, b) => parseDate(b.endDate) - parseDate(a.endDate));
+  return projects.sort((a, b) => {
+    const endDateDiff = parseDate(b.endDate) - parseDate(a.endDate);
+    if (endDateDiff !== 0) {
+      return endDateDiff;
+    }
+    return parseDate(b.startDate) - parseDate(a.startDate);
+  });
 }
 
 export function getProjectBySlugStatic(
