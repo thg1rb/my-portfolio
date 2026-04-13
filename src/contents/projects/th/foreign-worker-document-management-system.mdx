@@ -97,29 +97,29 @@ github: https://github.com/thg1rb/mtf-frontend
 
 1. โคลน Repository ของ Backend
 
-```sh
-git clone https://github.com/aockgonnabefree/mtf-backend
-```
+    ```sh
+    git clone https://github.com/aockgonnabefree/mtf-backend
+    ```
 
 2. เข้าไปยังโฟลเดอร์โปรเจกต์
 
-```sh
-cd mtf-backend
-```
+    ```sh
+    cd mtf-backend
+    ```
 
 3. สร้างไฟล์ Environment Variables โดยคัดลอกไฟล์ต้นแบบจาก `.env.example`
 
-> อย่าลืมเข้าไปตรวจสอบและแก้ไขค่าตัวแปรในไฟล์ .env ให้ตรงกับสภาพแวดล้อมของคุณ
+    > อย่าลืมเข้าไปตรวจสอบและแก้ไขค่าตัวแปรในไฟล์ .env ให้ตรงกับสภาพแวดล้อมของคุณ
 
-```sh
-cp .env.example .env
-```
+    ```sh
+    cp .env.example .env
+    ```
 
 4. เริ่มต้นการทำงานของ Database ผ่าน Docker
 
-```sh
-docker compose up -d db
-```
+    ```sh
+    docker compose up -d db
+    ```
 
 5. เปิด IntelliJ เพื่อรันโค้ด Java Spring Boot
 
@@ -127,24 +127,24 @@ docker compose up -d db
 
 1. โคลน Repository ของ Frontend
 
-```sh
-git clone https://github.com/thg1rb/mtf-frontend
-```
+    ```sh
+    git clone https://github.com/thg1rb/mtf-frontend
+    ```
 
 2. เข้าไปยังโฟลเดอร์โปรเจกต์
 
-```sh
-cd mtf-frontend
-```
+    ```sh
+    cd mtf-frontend
+    ```
 
 3. ติดตั้ง Dependencies (แพ็กเกจที่จำเป็น)
 
-```sh
-bun install
-```
+    ```sh
+    bun install
+    ```
 
 4. รัน Development Server
 
-```sh
-bun run dev
-```
+    ```sh
+    bun run dev
+    ```

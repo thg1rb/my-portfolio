@@ -31,12 +31,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     // Lists
     ul: ({ children }) => (
-      <ul className="mb-4 list-disc space-y-2 pl-6 marker:text-highlight" role="list">
+      <ul className="mb-4 space-y-2 pl-6 mdx-unordered-list" role="list">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="mb-4 list-decimal space-y-2 pl-6">
+      <ol className="mb-4 space-y-2 pl-6 mdx-ordered-list">
         {children}
       </ol>
     ),
