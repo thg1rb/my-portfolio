@@ -58,7 +58,7 @@ The system's access rights are divided into 6 main roles to ensure security and 
 
 - Verify, track the status, and review (approve or reject) applications of students within their affiliated campus.
 
-> 💡 **Note:** Users of all roles (except the Student Affairs Division) will use the front-end web interface developed with Svelte, while the "Student Affairs Division" role will operate through the back-office system developed with Laravel.
+> 💡 **Note:** Users of all roles (except the Student Affairs Division) will use the front-end web interface developed with **Svelte**, while the "Student Affairs Division" role will operate through the back-office system developed with **Laravel**.
 
 ## 🧑🏻‍💻 Roles and Responsibilities
 
@@ -87,94 +87,94 @@ Our team applied the **Agile Methodology (Scrum)** workflow to ensure system dev
 
 1. Clone the Svelte part of the project from GitHub to your local machine.
 
-```bash
-git clone https://github.com/thg1rb/p2-final-project-hbd-feel.git
-```
+    ```bash
+    git clone https://github.com/thg1rb/p2-final-project-hbd-feel.git
+    ```
 
 2. Navigate into the project directory.
 
-```bash
-cd p2-final-project-hbd-feel
-```
+    ```bash
+    cd p2-final-project-hbd-feel
+    ```
 
 3. Copy the default configuration file (Environment Variables) to set up the system.
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
 4. Run the container via Docker in the background to start the system.
 
-```bash
-docker compose up -d
-```
+    ```bash
+    docker compose up -d
+    ```
 
 ### Laravel
 
 1. Clone the Laravel part of the project from GitHub to your local machine.
 
-```bash
-git clone https://github.com/thg1rb/p2-final-project-backend-hbd-feel.git
-```
+    ```bash
+    git clone https://github.com/thg1rb/p2-final-project-backend-hbd-feel.git
+    ```
 
 2. Navigate into the project directory.
 
-```bash
-cd p2-final-project-backend-hbd-feel
-```
+    ```bash
+    cd p2-final-project-backend-hbd-feel
+    ```
 
 3. Copy the default configuration file for the Laravel side.
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
 4. Use Docker to run Composer to install Laravel Dependencies without installing PHP or Composer directly on the machine.
 
-```bash
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v "$(pwd):/app" \
-    -w /app \
-    composer:latest \
-    install --ignore-platform-reqs
-```
+    ```bash
+    docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v "$(pwd):/app" \
+        -w /app \
+        composer:latest \
+        install --ignore-platform-reqs
+    ```
 
 5. Start all containers defined in Laravel Sail (e.g., Server, Database, Redis).
 
-```bash
-sail up -d
-```
+    ```bash
+    sail up -d
+    ```
 
 6. Generate a new Application Key to be used for encrypting data to ensure system security.
 
-```bash
-sail artisan key:generate
-```
+    ```bash
+    sail artisan key:generate
+    ```
 
 7. Run the command to create all new database tables along with basic mock data.
 
-```bash
-sail artisan migrate:fresh --seed
-```
+    ```bash
+    sail artisan migrate:fresh --seed
+    ```
 
 8. Install the necessary packages for managing frontend assets within Laravel (via the Bun tool).
 
-```bash
-sail bun install
-```
+    ```bash
+    sail bun install
+    ```
 
 9. Run the command to compile frontend assets (e.g., TailwindCSS) in Development mode.
 
-```bash
-sail bun dev
-```
+    ```bash
+    sail bun dev
+    ```
 
 10. Open a new Terminal window to run the queue system for processing background jobs, such as sending emails.
 
-```bash
-sail artisan queue:work
-```
+    ```bash
+    sail artisan queue:work
+    ```
 
 ## 📑 Related Documents
 

@@ -145,4 +145,14 @@
   .code-block-header {
     @apply flex items-center justify-between border-b border-border bg-muted/50 px-4 py-2;
   }
+  /* Fix for MDX ordered lists */
+  .mdx-ordered-list {
+    list-style-type: decimal !important;
+    list-style-position: outside !important;
+  }
+  /* Fix for MDX unordered lists */
+  .mdx-unordered-list {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+  }
 }

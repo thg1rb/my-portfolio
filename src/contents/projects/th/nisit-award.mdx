@@ -59,7 +59,7 @@ thumbnail: /images/nisit-award/thumbnail.jpeg
 
 - ตรวจสอบ ติดตามสถานะ และพิจารณา (อนุมัติหรือปฏิเสธ) ใบสมัครของนิสิตภายในวิทยาเขตที่สังกัด
 
-> 💡 **หมายเหตุ:** ผู้ใช้งานทุกบทบาท (ยกเว้นกองพัฒนานิสิต) จะใช้งานผ่านหน้าเว็บที่พัฒนาด้วย Svelte ในขณะที่บทบาท "กองพัฒนานิสิต" จะดำเนินการผ่านระบบหลังบ้านที่พัฒนาด้วย Laravel
+> 💡 **หมายเหตุ:** ผู้ใช้งานทุกบทบาท (ยกเว้นกองพัฒนานิสิต) จะใช้งานผ่านหน้าเว็บที่พัฒนาด้วย **Svelte** ในขณะที่บทบาท "กองพัฒนานิสิต" จะดำเนินการผ่านระบบหลังบ้านที่พัฒนาด้วย **Laravel**
 
 ## 🧑🏻‍💻 บทบาทและความรับผิดชอบ
 
@@ -88,94 +88,94 @@ thumbnail: /images/nisit-award/thumbnail.jpeg
 
 1. Clone โปรเจกต์ส่วน Svelte จาก GitHub ลงมาที่เครื่อง
 
-```bash
-git clone https://github.com/thg1rb/p2-final-project-hbd-feel.git
-```
+    ```bash
+    git clone https://github.com/thg1rb/p2-final-project-hbd-feel.git
+    ```
 
 2. เข้าสู่โฟลเดอร์ของโปรเจกต์
 
-```bash
-cd p2-final-project-hbd-feel
-```
+    ```bash
+    cd p2-final-project-hbd-feel
+    ```
 
 3. คัดลอกไฟล์ตั้งค่าเริ่มต้น (Environment Variables) เพื่อเตรียมการตั้งค่าระบบ
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
 4. รัน Container ผ่าน Docker แบบพื้นหลังเพื่อเริ่มต้นระบบ
 
-```bash
-docker compose up -d
-```
+    ```bash
+    docker compose up -d
+    ```
 
 ### Laravel
 
 1. Clone โปรเจกต์ส่วน Laravel จาก GitHub ลงมาที่เครื่อง
 
-```bash
-git clone https://github.com/thg1rb/p2-final-project-backend-hbd-feel.git
-```
+    ```bash
+    git clone https://github.com/thg1rb/p2-final-project-backend-hbd-feel.git
+    ```
 
 2. เข้าสู่โฟลเดอร์ของโปรเจกต์
 
-```bash
-cd p2-final-project-backend-hbd-feel
-```
+    ```bash
+    cd p2-final-project-backend-hbd-feel
+    ```
 
 3. คัดลอกไฟล์ตั้งค่าเริ่มต้นสำหรับฝั่ง Laravel
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
 4. ใช้ Docker รัน Composer เพื่อติดตั้ง Dependencies ของ Laravel โดยไม่ต้องติดตั้ง PHP หรือ Composer ลงในเครื่องโดยตรง
 
-```bash
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v "$(pwd):/app" \
-    -w /app \
-    composer:latest \
-    install --ignore-platform-reqs
-```
+    ```bash
+    docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v "$(pwd):/app" \
+        -w /app \
+        composer:latest \
+        install --ignore-platform-reqs
+    ```
 
 5. เริ่มต้นการทำงานของ Container ทั้งหมดที่กำหนดไว้ใน Laravel Sail (เช่น Server, Database, Redis)
 
-```bash
-sail up -d
-```
+    ```bash
+    sail up -d
+    ```
 
 6. สร้าง Application Key ใหม่สำหรับใช้ในการเข้ารหัสข้อมูลเพื่อความปลอดภัยของระบบ
 
-```bash
-sail artisan key:generate
-```
+    ```bash
+    sail artisan key:generate
+    ```
 
 7. รันคำสั่งสร้างตารางในฐานข้อมูลใหม่ทั้งหมด พร้อมกับสร้างข้อมูลจำลองเบื้องต้น (Seeding)
 
-```bash
-sail artisan migrate:fresh --seed
-```
+    ```bash
+    sail artisan migrate:fresh --seed
+    ```
 
 8. ติดตั้งแพ็กเกจที่จำเป็นสำหรับการจัดการ Assets ฝั่ง Frontend ภายใน Laravel (ผ่านเครื่องมือ Bun)
 
-```bash
-sail bun install
-```
+    ```bash
+    sail bun install
+    ```
 
 9. รันคำสั่งสำหรับคอมไพล์ Frontend assets (เช่น TailwindCSS) ในโหมด Development
 
-```bash
-sail bun dev
-```
+    ```bash
+    sail bun dev
+    ```
 
 10. เปิด Terminal หน้าต่างใหม่ เพื่อรันระบบคิวสำหรับประมวลผลการทำงานเบื้องหลัง (Background Job) เช่น การส่งอีเมล
 
-```bash
-sail artisan queue:work
-```
+    ```bash
+    sail artisan queue:work
+    ```
 
 ## 📑 เอกสารที่เกี่ยวข้อง
 
