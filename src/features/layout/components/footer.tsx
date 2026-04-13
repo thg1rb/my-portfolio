@@ -6,9 +6,9 @@ import { AtSign } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/src/components/icons'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com', icon: GithubIcon },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: LinkedinIcon },
-  { name: 'Email', href: 'mailto:hello@bright.dev', icon: AtSign },
+  { name: 'GitHub', href: 'https://github.com/thg1rb', icon: GithubIcon },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/bowornrat', icon: LinkedinIcon },
+  { name: 'Email', href: 'mailto:bowornrat.t@hotmail.com', icon: AtSign },
 ]
 
 export function Footer() {
